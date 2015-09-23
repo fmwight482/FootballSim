@@ -2,11 +2,13 @@ package FootballSim;
 
 public class FootballGame {
 	public Field fbField;
+	public FootballTimer fbTimer;
 	FootballPlayer QB;
 	FootballPlayer WR;
 	
 	public FootballGame() {
 		fbField = new Field();
+		fbTimer = new FootballTimer();
 		QB = new FootballPlayer("QB");
 		WR = new FootballPlayer("WR");
 	}

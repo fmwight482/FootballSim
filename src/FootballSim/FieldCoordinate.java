@@ -17,6 +17,8 @@ public class FieldCoordinate {
 	public FieldCoordinate(FieldCoordinate coord1, FieldCoordinate coord2) {
 		vert = coord1.getVert() + coord2.getVert();
 		horz = coord1.getHorz() + coord2.getHorz();
+		
+		// constrain coordinates to within a range of 0-119 for vert and 0-52 for horz
 		if (vert >= 120) {
 			vert = 119;
 		}
