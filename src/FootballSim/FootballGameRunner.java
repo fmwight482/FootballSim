@@ -11,5 +11,4 @@ public class FootballGameRunner {
 	public static void main(String[] args) {
 		game.fbField.printField();
 	}
-
 }

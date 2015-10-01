@@ -6,6 +6,7 @@ public class FootballGame {
 	FootballPlayer QB;
 	FootballPlayer WR;
 	
+	// constructor with pre-built players for debugging convenience
 	public FootballGame() {
 		fbField = new Field();
 		fbTimer = new FootballTimer();
