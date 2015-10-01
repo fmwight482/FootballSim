@@ -69,6 +69,19 @@ public class Field {
 						toAdd = "-";
 					}
 				}
+				else if (vert == 59) {
+					if (secondDigit) {
+						secondDigit = false;
+						toAdd = "";
+					}
+					else if (horz == 6 || horz == 45) {
+						toAdd = Integer.toString(50);
+						secondDigit = true;
+					}
+					else {
+						toAdd = "_";
+					}
+				}
 				else if ((vert == 1 || vert == 8 || vert == 111 || vert == 118) && 
 						(horz > 1 && horz < 51)) {
 					toAdd = "-";
