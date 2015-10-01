@@ -21,7 +21,7 @@ public class Field {
 	}
 	
 	/**
-	 * initializes the gridiron integet array and fills it with zeros
+	 * initializes the gridiron integer array and fills it with zeros
 	 */
 	private void initializeGridiron() {
 		gridiron = new int[120][53];
