@@ -2,15 +2,27 @@ package FootballSim;
 
 import java.util.HashMap;
 
+/**
+ * Class to keep track of where players and other entities are currently located 
+ * on the playing field. 
+ * @author Rick
+ *
+ */
 public class Field {
 	int gridiron[][];
 	private HashMap<FieldCoordinate, FootballPlayer> playerLocations;
 	
+	/**
+	 * standard constructor
+	 */
 	public Field() {
 		initializeGridiron();
 		playerLocations = new HashMap<FieldCoordinate, FootballPlayer>();
 	}
 	
+	/**
+	 * initializes the gridiron integet array and fills it with zeros
+	 */
 	private void initializeGridiron() {
 		gridiron = new int[120][53];
 		
@@ -21,12 +33,25 @@ public class Field {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param coord1
+	 * @param coord2
+	 * @return the euclidean distance between coord1 and coord2
+	 */
 	public double getDist(FieldCoordinate coord1, FieldCoordinate coord2) {
 		double dist = Math.sqrt(Math.pow(coord1.getVert() - coord2.getVert(), 2) + 
 				Math.pow(coord1.getHorz() - coord2.getHorz(), 2));
 		return dist;
 	}
 	
+	/**
+	 * Checks if there is a player at startPos and no player at endPos.
+	 * If so, moves the player from startPos to endPos.
+	 * @param startPos
+	 * @param endPos
+	 * @throws FootballException
+	 */
 	public void movePlayer(FieldCoordinate startPos, FieldCoordinate endPos) throws FootballException {
 		int startNum = gridiron[startPos.getVert()][startPos.getHorz()];
 		int endNum = gridiron[endPos.getVert()][endPos.getHorz()];
@@ -46,6 +71,9 @@ public class Field {
 		}
 	}
 	
+	/**
+	 * toString override
+	 */
 	public String toString() {
 		String fieldString = "blank";
 		StringBuilder b = new StringBuilder();
@@ -113,6 +141,14 @@ public class Field {
 		return fieldString;
 	}
 	
+	/**
+	 * prints the input value if the tile is unoccupied, otherwise prints the 
+	 * toString value for the occupying player
+	 * @param b
+	 * @param input
+	 * @param vert
+	 * @param horz
+	 */
 	private void printSquare(StringBuilder b, String input, int vert, int horz) {
 		if (gridiron[vert][horz] == 0) {
 			b.append(input);

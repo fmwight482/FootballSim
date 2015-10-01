@@ -1,5 +1,10 @@
 package FootballSim;
 
+/**
+ * class denoting a movement of the football from one point on the field to another
+ * @author Rick
+ *
+ */
 public class BallMoveEvent extends absFootballEvent implements IFootballEvent {
 	FieldCoordinate oldCoord;
 	FieldCoordinate newCoord;

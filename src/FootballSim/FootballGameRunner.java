@@ -1,9 +1,9 @@
 package FootballSim;
 
 /**
- * 
- * @author Rick
  * Plays football games and outputs results to the command line
+ * @author Rick
+ * 
  */
 public class FootballGameRunner {
 	static FootballGame game = new FootballGame();

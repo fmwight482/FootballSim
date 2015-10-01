@@ -1,5 +1,10 @@
 package FootballSim;
 
+/**
+ * Class denoting a location on a FootballField
+ * @author Rick
+ *
+ */
 public class FieldCoordinate {
 	int vert;
 	int horz;
@@ -14,6 +19,12 @@ public class FieldCoordinate {
 		horz = aCoord.getHorz();
 	}
 	
+	/**
+	 * constructs a new coordinate by combining two other coordinates
+	 * forces new coordinate to remain within the bounds of the field. 
+	 * @param coord1
+	 * @param coord2 (usually a vector)
+	 */
 	public FieldCoordinate(FieldCoordinate coord1, FieldCoordinate coord2) {
 		vert = coord1.getVert() + coord2.getVert();
 		horz = coord1.getHorz() + coord2.getHorz();
@@ -41,6 +52,9 @@ public class FieldCoordinate {
 		return horz;
 	}
 	
+	/**
+	 * override of equals method, compares vert and horz values
+	 */
 	public boolean equals(Object o) {
 		boolean isEqual = false;
 		if (o instanceof FieldCoordinate) {
@@ -54,6 +68,9 @@ public class FieldCoordinate {
 		return isEqual;
 	}
 	
+	/**
+	 * override of hashCode
+	 */
 	public int hashCode() {
 		int hash = 13;
 		hash = (hash + getVert()) * 17;
@@ -62,6 +79,9 @@ public class FieldCoordinate {
 		return hash;
 	}
 	
+	/**
+	 * override of toString, returns coordinate pair in standard (x, y) notation.
+	 */
 	public String toString() {
 		return "(" + getVert() + ", " + getHorz() + ")";
 	}

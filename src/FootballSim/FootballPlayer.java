@@ -1,6 +1,12 @@
 package FootballSim;
 
+/**
+ * Class to hold the information for football players
+ * @author Rick
+ *
+ */
 public class FootballPlayer {
+	// will be expanded to include name, more attributes, etc
 	int arm;
 	int speed;
 	int catching;
@@ -11,6 +17,10 @@ public class FootballPlayer {
 		pos = pPos;
 	}
 	
+	/**
+	 * gives a single character value to be displayed when printing the field. 
+	 * currently rudementary and based entierly off of listed position
+	 */
 	public String toString() {
 		String playerString = "?";
 		if (pos == "QB") {
