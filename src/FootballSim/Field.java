@@ -16,4 +16,8 @@ public class Field {
 	public void movePlayer(FieldCoordinate startPos, FieldCoordinate endPos) {
 		// move the player
 	}
+	
+	public void printField() {
+		
+	}
 }

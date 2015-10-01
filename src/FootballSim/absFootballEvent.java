@@ -1,6 +1,6 @@
 package FootballSim;
 
-public abstract class absFootballEvent implements Comparable {
+public abstract class absFootballEvent implements Comparable<absFootballEvent> {
 	int time;
 	
 	public absFootballEvent(int aTime) {
@@ -11,26 +11,20 @@ public abstract class absFootballEvent implements Comparable {
 		return time;
 	}
 	
-	public int compareTo(Object o) {
-		int comparison = 0;
+	public int compareTo(absFootballEvent anEvent) {
+		int comparison;
 		
-		if (o instanceof absFootballEvent) {
-			int otherTime = ((absFootballEvent)o).getTime();
-			if (otherTime < time) {
-				comparison = -1;
-			}
-			else if (otherTime > time) {
-				comparison = 1;
-			}
+		int otherTime = anEvent.getTime();
+		if (otherTime < time) {
+			comparison = -1;
+		}
+		else if (otherTime > time) {
+			comparison = 1;
 		}
 		else {
-				try {
-					throw new FootballException("Cannot compare absFooballEvent to a " + o.getClass());
-				} 
-				catch (FootballException e) {
-					e.printStackTrace();
-				}
+			comparison = 0;
 		}
+		
 		return comparison;
 	}
 }
