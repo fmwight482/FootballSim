@@ -40,4 +40,25 @@ public class FieldCoordinate {
 	public int getHorz() {
 		return horz;
 	}
+	
+	public boolean equals(Object o) {
+		boolean isEqual = false;
+		if (o instanceof FieldCoordinate) {
+			FieldCoordinate otherCoord = ((FieldCoordinate)o);
+			if (otherCoord.getVert() == getVert() &&
+					otherCoord.getHorz() == getHorz()) {
+				isEqual = true;
+			}
+		}
+		
+		return isEqual;
+	}
+	
+	public int hashCode() {
+		int hash = 13;
+		hash = (hash + getVert()) * 17;
+		hash = (hash + getHorz()) * 17;
+		
+		return hash;
+	}
 }
