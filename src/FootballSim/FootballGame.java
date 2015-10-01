@@ -14,7 +14,8 @@ public class FootballGame {
 		WR = new FootballPlayer("WR");
 	}
 	
-	public void runRoute(FieldCoordinate startPos, Route aRoute, FootballPlayer reciever) {
+	public void runRoute(FieldCoordinate startPos, Route aRoute, FootballPlayer reciever) 
+			throws FootballException {
 		FieldCoordinate currentPos = startPos;
 		FieldCoordinate targetPos;
 		while (aRoute.countSteps() > 0) {

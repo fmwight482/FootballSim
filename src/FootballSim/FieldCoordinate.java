@@ -61,4 +61,8 @@ public class FieldCoordinate {
 		
 		return hash;
 	}
+	
+	public String toString() {
+		return "(" + getVert() + ", " + getHorz() + ")";
+	}
 }

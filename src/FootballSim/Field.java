@@ -27,8 +27,23 @@ public class Field {
 		return dist;
 	}
 	
-	public void movePlayer(FieldCoordinate startPos, FieldCoordinate endPos) {
-		// move the player
+	public void movePlayer(FieldCoordinate startPos, FieldCoordinate endPos) throws FootballException {
+		int startNum = gridiron[startPos.getVert()][startPos.getHorz()];
+		int endNum = gridiron[endPos.getVert()][endPos.getHorz()];
+		if (startNum == 0) {
+			throw new FootballException("No player at coordinates " + startPos.toString());
+		}
+		else if (endNum != 0) {
+			throw new FootballException("Cannot move player number " + startNum + " to coordinates " + 
+					endPos.toString() + ", space is already accupied by player number " + endNum);
+		}
+		else {
+			FootballPlayer player = playerLocations.remove(startPos);
+			playerLocations.put(endPos, player);
+			
+			gridiron[startPos.getVert()][startPos.getHorz()] = 0;
+			gridiron[endPos.getVert()][endPos.getHorz()] = startNum;
+		}
 	}
 	
 	public String toString() {
