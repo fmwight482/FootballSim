@@ -17,6 +17,12 @@ public class Field {
 		// move the player
 	}
 	
+	public String toString() {
+		String fieldString = "blank";
+		
+		return fieldString;
+	}
+	
 	public void printField() {
 		
 	}

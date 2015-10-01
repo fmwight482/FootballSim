@@ -11,6 +11,20 @@ public class FootballPlayer {
 		pos = pPos;
 	}
 	
+	public String toString() {
+		String playerString = "?";
+		if (pos == "QB") {
+			playerString = "Q";
+		}
+		if (pos == "WR") {
+			playerString = "W";
+		}
+		if (pos == "CB") {
+			playerString = "C";
+		}
+		return playerString;
+	}
+	
 	public int getArm() {
 		return arm;
 	}
