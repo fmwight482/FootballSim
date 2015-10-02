@@ -46,6 +46,16 @@ public class Field {
 	}
 	
 	/**
+	 * place the player at the specified coordinates
+	 * @param pos
+	 * @param player
+	 * @throws FootballException
+	 */
+	public void insertPlayer(FieldCoordinate pos, FootballPlayer player) throws FootballException {
+		
+	}
+	
+	/**
 	 * Checks if there is a player at startPos and no player at endPos.
 	 * If so, moves the player from startPos to endPos.
 	 * @param startPos
