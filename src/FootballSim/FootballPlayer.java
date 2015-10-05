@@ -7,11 +7,11 @@ package FootballSim;
  */
 public class FootballPlayer {
 	// will be expanded to include name, more attributes, etc
-	String pos;
-	int arm;
-	int speed;
-	int catching;
-	int firstStep;
+	private String pos;
+	private int arm;
+	private int speed;
+	private int catching;
+	private int firstStep;
 	
 	
 	public FootballPlayer(String pPos) {
@@ -27,6 +27,7 @@ public class FootballPlayer {
 		arm = otherPlayer.getArm();
 		speed = otherPlayer.getSpeed();
 		catching = otherPlayer.getCatching();
+		firstStep = otherPlayer.getFirstStep();
 	}
 	
 	/**
@@ -45,6 +46,36 @@ public class FootballPlayer {
 			playerString = "C";
 		}
 		return playerString;
+	}
+	
+	/**
+	 * Calculate the effective speed of a player in milliseconds/yard. 
+	 * This is the simplified speed calculation, using only the speed attribute. 
+	 * getTimeToRunPath() is more complicated, using the first step attribute and 
+	 * information from previous "steps" to make a more realistic estimate.
+	 * <p>
+	 * Assumptions/explanations: 
+	 * <br>
+	 * - As of 2015, 17 players had run a <= 4.30 second 40. The best time was 4.24 seconds. 
+	 * As 0.06 seconds over 40 yards is negligible in-game, it seems reasonable to map 99 speed
+	 * to a 4.30 second 40 time, which is 9.30 yards/sec and 107.5 msec/yard. 
+	 * <br>
+	 * - The worst time I can find from the 2015 combine is 5.74 seconds. It seems reasonable 
+	 * to assume that no one at the combine would have earned a "0" attribute score for speed 
+	 * or any other physical att, so I will round down and map 0 speed to a 6.00 second 40 
+	 * time, which is 6.67 yards/sec and 150 msec/yard.
+	 * <br>
+	 * - Thus, the intended range is from 107.5 to 150 msec/yard. 150 - (42.5 * (att + 1)/100)
+	 * is an adequate formula to capture that range, although that may be revisited.
+	 * @return number of milliseconds necessary for this player to move one yard
+	 */
+	public double getBasicSpeed() {
+		double basicSpeed = 150 - (42.5 * (speed + 1) / 100);
+		return basicSpeed;
+	}
+	
+	public double getTimeToRunPath(FieldCoordinate startPos) {
+		return 0;
 	}
 	
 	/**
