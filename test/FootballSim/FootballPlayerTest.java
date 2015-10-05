@@ -44,11 +44,13 @@ public class FootballPlayerTest {
 		qb1.setArm(90);
 		qb1.setSpeed(45);
 		qb1.setCatching(3);
+		qb1.setFirstStep(23);
 		noPosPlayer.setPos("still no position");
 		
 		assertEquals(qb1.getArm(), 90);
 		assertEquals(qb1.getSpeed(), 45);
 		assertEquals(qb1.getCatching(), 3);
+		assertEquals(qb1.getFirstStep(), 23);
 		assertEquals(noPosPlayer.getPos(), "still no position");
 	}
 	
@@ -57,6 +59,7 @@ public class FootballPlayerTest {
 		qb1.setArm(90);
 		qb1.setSpeed(45);
 		qb1.setCatching(3);
+		qb1.setFirstStep(23);
 		qb3 = new FootballPlayer(qb1);
 		
 		assertEquals(qb1, qb3);
@@ -69,6 +72,7 @@ public class FootballPlayerTest {
 		qb1.setArm(90);
 		qb1.setSpeed(45);
 		qb1.setCatching(3);
+		qb1.setFirstStep(23);
 		qb3 = new FootballPlayer(qb1);
 		
 		assertEquals(qb1.hashCode(), qb3.hashCode());
