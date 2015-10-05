@@ -3,7 +3,7 @@ package FootballSim;
 import java.util.PriorityQueue;
 
 /**
- * Class to handle when time sensitive events occur in relation to eachother
+ * Class to handle when time sensitive events occur in relation to each other
  * @author Rick
  *
  */
@@ -24,6 +24,9 @@ public class FootballTimer {
 		return timer.poll();
 	}
 	
+	/**
+	 * @return the current time
+	 */
 	public int getCurrentTime() {
 		return currentTime;
 	}
