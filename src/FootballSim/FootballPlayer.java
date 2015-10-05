@@ -67,6 +67,7 @@ public class FootballPlayer {
 	 * <br>
 	 * - Thus, the intended range is from 107.5 to 150 msec/yard. 150 - (42.5 * (att + 1)/100)
 	 * is an adequate formula to capture that range, although that may be revisited.
+	 * 
 	 * @return number of milliseconds necessary for this player to move one yard
 	 */
 	public double getBasicSpeed() {
@@ -74,7 +75,38 @@ public class FootballPlayer {
 		return basicSpeed;
 	}
 	
-	public double getTimeToRunPath(FieldCoordinate startPos) {
+	/**
+	 * Function to calculate the time required for this player in a given situation to move 
+	 * to the end of the given path. This is a much more complicated calculation than 
+	 * getBasicSpeed, and will likely continue to be a work in progress as the rest of the 
+	 * game is developed. Attributes used will include speed and first step to determine 
+	 * straight line speed, as well as footwork and possibly others to estimate speed of 
+	 * cuts and modify movement types other than straight sprints. estimates involving 
+	 * cuts may be moved to a subroutine or a fully separate function.
+	 * <p>
+	 * Assumptions/explanations:
+	 * <b>
+	 * - The speed attribute is the sole determinant of a player's maximum speed, while first 
+	 * step allows them to reach that top speed faster. It is reasonable to assume that players 
+	 * with great 40 times benefit from a good first step as well as excellent speed. 
+	 * - This means that first step will be very helpful not only for quick releases off the 
+	 * line, but also quicker movement immediately after a cut. This seems fairly intuitive. 
+	 * 
+	 * @param initialFacingVector A vector denoting which direction the player's body is facing 
+	 * at this time 
+	 * @param initialMotionVector A vector denoting the direction of the player's movement/
+	 * momentum at this time 
+	 * @param initialVelocity The velocity at which the player is currently moving, in the 
+	 * direction of initialMotionVector 
+	 * @param targetPath The path vector along which the player intends to move 
+	 * @param currentMoveType the movetype the player is using right now 
+	 * (sprint, backpedal, etc) 
+	 * @param targetMoveType The movetype the player will use when they move along targetPath 
+	 * @return the time in milliseconds required for the player to move along the given path 
+	 */
+	public double getTimeToRunPath(FieldCoordinate initialFacingVector, 
+			FieldCoordinate initialMotionVector, double initialVelocity, 
+			FieldCoordinate targetPath, MoveType currentMoveType, MoveType targetMoveType) {
 		return 0;
 	}
 	
