@@ -9,7 +9,7 @@ import java.util.HashMap;
  *
  */
 public class Field {
-	int gridiron[][];
+	private int gridiron[][];
 	private HashMap<FieldCoordinate, FootballPlayer> playerLocations;
 	
 	/**
@@ -40,7 +40,24 @@ public class Field {
 	 * @throws FootballException
 	 */
 	public void insertPlayer(FieldCoordinate pos, FootballPlayer player) throws FootballException {
+		int vert = pos.getVert();
+		int horz = pos.getHorz();
 		
+		if (vert < 0 || vert > 119 || horz < 0 || horz > 52) {
+			throw new FootballException(pos.toString() + " is not a valid location");
+		}
+		
+		int posNum = gridiron[vert][horz];
+		if (posNum != 0) {
+			throw new FootballException("cannot place player at coordinates " + pos.toString() + 
+					" space is already occupied by player number " + posNum);
+		}
+		else {
+			// player number should probably be a unique ID number once players are given those
+			int playerNum = 1;
+			gridiron[vert][horz] = playerNum;
+			playerLocations.put(pos, player);
+		}
 	}
 	
 	/**
@@ -67,6 +84,31 @@ public class Field {
 			gridiron[startPos.getVert()][startPos.getHorz()] = 0;
 			gridiron[endPos.getVert()][endPos.getHorz()] = startNum;
 		}
+	}
+	
+	/**
+	 * @param aCoord
+	 * @return the football player at the given location on the field
+	 */
+	public FootballPlayer getPlayerAt(FieldCoordinate aCoord) throws FootballException {
+		FootballPlayer player;
+		if (playerLocations.containsKey(aCoord)) {
+			player = playerLocations.get(aCoord);
+		}
+		else {
+			throw new FootballException("There is no player at coordinates " + aCoord.toString());
+		}
+		
+		return player;
+	}
+	
+	/**
+	 * @param aCoord
+	 * @return the player number of the football player at the given location on the field
+	 */
+	public int getPlayerNumAt(FieldCoordinate aCoord) {
+		int playerNum = gridiron[aCoord.getVert()][aCoord.getHorz()];
+		return playerNum;
 	}
 	
 	/**
