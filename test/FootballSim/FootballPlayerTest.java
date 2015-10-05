@@ -65,6 +65,11 @@ public class FootballPlayerTest {
 	}
 	
 	@Test
+	public void getTimeToRunPathTest() {
+		fail("Test not implemented because results are implementation-dependent");
+	}
+	
+	@Test
 	public void equalsTest() {
 		qb1.setArm(90);
 		qb1.setSpeed(45);
