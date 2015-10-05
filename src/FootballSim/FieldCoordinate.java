@@ -9,14 +9,18 @@ public class FieldCoordinate {
 	int vert;
 	int horz;
 	
-	public FieldCoordinate(int v, int h) {
+	public FieldCoordinate(int v, int h) throws FootballException {
 		vert = v;
 		horz = h;
+		
+		checkCoords();
 	}
 	
-	public FieldCoordinate(FieldCoordinate aCoord) {
+	public FieldCoordinate(FieldCoordinate aCoord) throws FootballException {
 		vert = aCoord.getVert();
 		horz = aCoord.getHorz();
+		
+		checkCoords();
 	}
 	
 	/**
@@ -25,22 +29,29 @@ public class FieldCoordinate {
 	 * @param coord1
 	 * @param coord2 (usually a vector)
 	 */
-	public FieldCoordinate(FieldCoordinate coord1, FieldCoordinate coord2) {
+	public FieldCoordinate(FieldCoordinate coord1, FieldCoordinate coord2) throws FootballException {
 		vert = coord1.getVert() + coord2.getVert();
 		horz = coord1.getHorz() + coord2.getHorz();
 		
-		// constrain coordinates to within a range of 0-119 for vert and 0-52 for horz
+		checkCoords();
+	}
+	
+	/**
+	 * constrain coordinates to within a range of 0-119 for vert and 0-52 for horz
+	 * @throws FootballException
+	 */
+	private void checkCoords() throws FootballException {
 		if (vert >= 120) {
-			vert = 119;
+			throw new FootballException("vert value of " + vert + " is greater than 119");
 		}
 		else if (vert < 0) {
-			vert = 0;
+			throw new FootballException("vert value of " + vert + " is less than 0");
 		}
 		if (horz >= 53) {
-			horz = 52;
+			throw new FootballException("vert value of " + horz + " is greater than 52");
 		}
 		else if (horz < 0) {
-			horz = 0;
+			throw new FootballException("vert value of " + horz + " is less than 0");
 		}
 	}
 	
