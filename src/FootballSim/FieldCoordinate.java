@@ -9,18 +9,14 @@ public class FieldCoordinate {
 	int vert;
 	int horz;
 	
-	public FieldCoordinate(int v, int h) throws FootballException {
+	public FieldCoordinate(int v, int h) {
 		vert = v;
 		horz = h;
-		
-		checkCoords();
 	}
 	
-	public FieldCoordinate(FieldCoordinate aCoord) throws FootballException {
+	public FieldCoordinate(FieldCoordinate aCoord) {
 		vert = aCoord.getVert();
 		horz = aCoord.getHorz();
-		
-		checkCoords();
 	}
 	
 	/**

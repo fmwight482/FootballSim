@@ -164,14 +164,9 @@ public class Field {
 			b.append(input);
 		}
 		else {
-			try {
-				FieldCoordinate coord = new FieldCoordinate(vert, horz);
-				String toAdd = playerLocations.get(coord).toString();
-				b.append(toAdd);
-			}
-			catch (FootballException e) {
-				e.printStackTrace();
-			}
+			FieldCoordinate coord = new FieldCoordinate(vert, horz);
+			String toAdd = playerLocations.get(coord).toString();
+			b.append(toAdd);
 		}
 	}
 	
