@@ -9,6 +9,13 @@ import java.util.PriorityQueue;
  */
 public class FootballTimer {
 	PriorityQueue<IFootballEvent> timer;
+	
+	/**
+	 * currentTime is the current simulated time in milliseconds. Note that this represents 
+	 * "real time," not game time, and time as simulated by this class will continue to 
+	 * "happen" even when the game clock is stopped (such as during a timeout or at the end 
+	 * of a half). 
+	 */
 	int currentTime;
 	
 	public FootballTimer() {
