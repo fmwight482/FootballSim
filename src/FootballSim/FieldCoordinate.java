@@ -60,6 +60,17 @@ public class FieldCoordinate {
 	}
 	
 	/**
+	 * 
+	 * @param otherCoord
+	 * @return the distance between this coordinate and the given coordinate
+	 */
+	public double getDistBetween(FieldCoordinate otherCoord) {
+		double dist = Math.sqrt(Math.pow(getVert() - otherCoord.getVert(), 2) + 
+				Math.pow(getHorz() - otherCoord.getHorz(), 2));
+		return dist;
+	}
+	
+	/**
 	 * override of equals method, compares vert and horz values
 	 */
 	public boolean equals(Object o) {

@@ -92,4 +92,11 @@ public class FieldCoordinateTest {
 		assertEquals(coord1.toString(), "(1, 1)");
 		assertEquals(coord8.toString(), "(119, 52)");
 	}
+	
+	@Test
+	public void getDistBetweenTest() {
+		assertEquals(coord1.getDistBetween(new FieldCoordinate(1, 5)), 4.0, 0.0);
+		assertEquals(coord1.getDistBetween(coord2), 0.0, 0.0);
+		assertEquals(coord3.getDistBetween(coord5), 11.66, 0.01);
+	}
 }

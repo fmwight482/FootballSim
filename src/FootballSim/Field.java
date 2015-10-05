@@ -34,18 +34,6 @@ public class Field {
 	}
 	
 	/**
-	 * 
-	 * @param coord1
-	 * @param coord2
-	 * @return the euclidean distance between coord1 and coord2
-	 */
-	public double getDist(FieldCoordinate coord1, FieldCoordinate coord2) {
-		double dist = Math.sqrt(Math.pow(coord1.getVert() - coord2.getVert(), 2) + 
-				Math.pow(coord1.getHorz() - coord2.getHorz(), 2));
-		return dist;
-	}
-	
-	/**
 	 * place the player at the specified coordinates
 	 * @param pos
 	 * @param player
