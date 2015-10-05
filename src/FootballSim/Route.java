@@ -8,7 +8,7 @@ import java.util.LinkedList;
  *
  */
 public class Route {
-	LinkedList<FieldCoordinate> steps;
+	private LinkedList<FieldCoordinate> steps;
 	
 	public Route() {
 		steps = new LinkedList<FieldCoordinate>();
