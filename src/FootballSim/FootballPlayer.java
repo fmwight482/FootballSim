@@ -18,6 +18,17 @@ public class FootballPlayer {
 	}
 	
 	/**
+	 * copy constructor
+	 * @param otherPlayer
+	 */
+	public FootballPlayer(FootballPlayer otherPlayer) {
+		pos = otherPlayer.getPos();
+		arm = otherPlayer.getArm();
+		speed = otherPlayer.getSpeed();
+		catching = otherPlayer.getCatching();
+	}
+	
+	/**
 	 * gives a single character value to be displayed when printing the field. 
 	 * currently rudementary and based entierly off of listed position
 	 */
@@ -65,5 +76,26 @@ public class FootballPlayer {
 	
 	public void setPos(String pos) {
 		this.pos = pos;
+	}
+	
+	public boolean equals(Object o) {
+		boolean isEqual = false;
+		if (o instanceof FootballPlayer) {
+			FootballPlayer otherPlayer = new FootballPlayer((FootballPlayer)o);
+			if (pos == otherPlayer.getPos() && speed == otherPlayer.getSpeed() &&
+					arm == otherPlayer.getArm() && catching == otherPlayer.getCatching()) {
+				isEqual = true;
+			}
+		}
+		return isEqual;
+	}
+	
+	public int hashCode() {
+		int hash = 13;
+		hash = (hash + pos.hashCode()) * 17;
+		hash = (hash + arm) * 17;
+		hash = (hash + speed) * 17;
+		hash = (hash + catching) * 17;
+		return hash;
 	}
 }
