@@ -16,6 +16,13 @@ public class PlayerMoveEvent extends absFootballEvent implements IFootballEvent 
 		setNewCoord(aNewCoord);
 		setPlayer(aPlayer);
 	}
+	
+	public PlayerMoveEvent(PlayerMoveEvent anEvent) {
+		super(anEvent.getTime());
+		setOldCoord(anEvent.getOldCoord());
+		setNewCoord(anEvent.getNewCoord());
+		setPlayer(anEvent.getPlayer());
+	}
 
 	@Override
 	public void executeEvent() {
