@@ -20,7 +20,8 @@ public abstract class absFootballEvent implements Comparable<absFootballEvent> {
 	}
 	
 	/**
-	 * override of compareTo. Compares events based off of their times.
+	 * override of compareTo. Compares events based off of their times. This is explicitly less 
+	 * sophisticated than the comparisons made in overrides of equals function. 
 	 */
 	public int compareTo(absFootballEvent anEvent) {
 		int comparison;
