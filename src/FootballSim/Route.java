@@ -14,6 +14,10 @@ public class Route {
 		steps = new LinkedList<FieldCoordinate>();
 	}
 	
+	public Route(Route aRoute) {
+		steps = new LinkedList<FieldCoordinate>(aRoute.getSteps());
+	}
+	
 	/**
 	 * adds a (vector) coordinate denoting a new movement
 	 * @param newCoord
@@ -34,5 +38,13 @@ public class Route {
 	 */
 	public int countSteps() {
 		return steps.size();
+	}
+	
+	public LinkedList<FieldCoordinate> getSteps() {
+		return steps;
+	}
+	
+	public void setSteps(LinkedList<FieldCoordinate> someSteps) {
+		
 	}
 }
