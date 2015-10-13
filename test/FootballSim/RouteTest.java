@@ -7,6 +7,7 @@ import org.junit.Test;
 
 public class RouteTest {
 	Route route1;
+	Route route2;
 	FieldCoordinate coord1;
 	FieldCoordinate coord2;
 	FieldCoordinate coord3;
@@ -22,6 +23,11 @@ public class RouteTest {
 	@Test
 	public void constructorTest() {
 		assertNotNull(route1);
+		route1.addStep(coord1);
+		route1.addStep(coord2);
+		route1.addStep(coord3);
+		route2 = new Route(route1);
+		assertEquals(route1, route2);
 	}
 	
 	@Test
