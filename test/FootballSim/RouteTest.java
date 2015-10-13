@@ -23,9 +23,22 @@ public class RouteTest {
 	@Test
 	public void constructorTest() {
 		assertNotNull(route1);
+	}
+	
+	@Test
+	public void copyConstructorTest1() {
 		route1.addStep(coord1);
 		route1.addStep(coord2);
 		route1.addStep(coord3);
+		route2 = new Route(route1);
+		assertEquals(route1, route2);
+	}
+	
+	@Test
+	public void copyConstructorTest2() {
+		route1.addStep(coord3);
+		route1.addStep(coord2);
+		route1.addStep(coord1);
 		route2 = new Route(route1);
 		assertEquals(route1, route2);
 	}
@@ -41,5 +54,30 @@ public class RouteTest {
 		assertEquals(coord4, coord1);
 		assertEquals(route1.countSteps(), 2);
 	}
-
+	
+	@Test
+	public void equalsTest() {
+		route2 = new Route();
+		assertEquals(route1, route2);
+		route1.addStep(coord1);
+		route1.addStep(coord2);
+		route1.addStep(coord3);
+		route2.addStep(coord1);
+		route2.addStep(coord2);
+		route2.addStep(coord3);
+		assertEquals(route1, route2);
+	}
+	
+	@Test
+	public void hashCodeTest() {
+		route2 = new Route();
+		assertEquals(route1.hashCode(), route2.hashCode());
+		route1.addStep(coord1);
+		route1.addStep(coord2);
+		route1.addStep(coord3);
+		route2.addStep(coord1);
+		route2.addStep(coord2);
+		route2.addStep(coord3);
+		assertEquals(route1.hashCode(), route2.hashCode());
+	}
 }
