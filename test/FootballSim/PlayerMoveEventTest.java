@@ -12,6 +12,7 @@ public class PlayerMoveEventTest {
 	FieldCoordinate coord2;
 	FieldCoordinate coord3;
 	FieldCoordinate coord4;
+	Route route1;
 	
 	@Before
 	public void setup() {
