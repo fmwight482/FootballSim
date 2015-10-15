@@ -65,4 +65,14 @@ public class Route {
 		}
 		return isEqual;
 	}
+	
+	public int hashCode() {
+		int hash = 17;
+		int numSteps = countSteps();
+		Route thisRoute = new Route(this);
+		for (int i=0; i<numSteps; i++) {
+			hash = (hash + thisRoute.getNextStep().hashCode()) * 13;
+		}
+		return hash;
+	}
 }
