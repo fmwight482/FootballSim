@@ -56,7 +56,7 @@ public class RouteTest {
 	}
 	
 	@Test
-	public void equalsTest() {
+	public void equalsTest1() {
 		route2 = new Route();
 		assertEquals(route1, route2);
 		route1.addStep(coord1);
@@ -66,6 +66,20 @@ public class RouteTest {
 		route2.addStep(coord2);
 		route2.addStep(coord3);
 		assertEquals(route1, route2);
+	}
+	
+	@Test
+	public void equalsTest2() {
+		route2 = new Route();
+		route1.addStep(coord1);
+		assertNotEquals(route1, route2);
+		route1.addStep(coord2);
+		route1.addStep(coord3);
+		route2.addStep(coord2);
+		assertNotEquals(route1, route2);
+		route2.addStep(coord3);
+		route2.addStep(coord1);
+		assertNotEquals(route1, route2);
 	}
 	
 	@Test
