@@ -11,13 +11,12 @@ public class PlayerMoveEvent extends absFootballEvent implements IFootballEvent 
 	private FootballPlayer player;
 	private Route route;
 	
-	public PlayerMoveEvent(int aTime, FieldCoordinate anOldCoord, FieldCoordinate aNewCoord, 
-			Route aRoute, FootballPlayer aPlayer) {
+	public PlayerMoveEvent(int aTime, FieldCoordinate anOldCoord, Route aRoute, FootballPlayer aPlayer) {
 		super(aTime);
-		setOldCoord(anOldCoord);
-		setNewCoord(aNewCoord);
-		setPlayer(aPlayer);
 		setRoute(aRoute);
+		setOldCoord(anOldCoord);
+		setNewCoord(route.getNextStep());
+		setPlayer(aPlayer);
 	}
 	
 	public PlayerMoveEvent(PlayerMoveEvent anEvent) {
@@ -62,7 +61,7 @@ public class PlayerMoveEvent extends absFootballEvent implements IFootballEvent 
 	}
 
 	public void setRoute(Route aRoute) {
-		route = aRoute;
+		route = new Route(aRoute);
 	}
 
 	public boolean equals(Object o) {
