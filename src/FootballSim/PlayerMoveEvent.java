@@ -11,6 +11,13 @@ public class PlayerMoveEvent extends absFootballEvent implements IFootballEvent 
 	private FootballPlayer player;
 	private Route route;
 	
+	/**
+	 * standard constructor for PlayerMoveEvent class
+	 * @param aTime
+	 * @param anOldCoord
+	 * @param aRoute
+	 * @param aPlayer
+	 */
 	public PlayerMoveEvent(int aTime, FieldCoordinate anOldCoord, Route aRoute, FootballPlayer aPlayer) {
 		super(aTime);
 		setRoute(aRoute);
@@ -19,6 +26,10 @@ public class PlayerMoveEvent extends absFootballEvent implements IFootballEvent 
 		setPlayer(aPlayer);
 	}
 	
+	/**
+	 * copy constructor for PlayerMoveEvent class
+	 * @param anEvent
+	 */
 	public PlayerMoveEvent(PlayerMoveEvent anEvent) {
 		super(anEvent.getTime());
 		setOldCoord(anEvent.getOldCoord());
@@ -26,7 +37,7 @@ public class PlayerMoveEvent extends absFootballEvent implements IFootballEvent 
 		setPlayer(anEvent.getPlayer());
 		setRoute(anEvent.getRoute());
 	}
-
+	
 	@Override
 	public void executeEvent() {
 		// TODO move player from oldCoord to newCoord
