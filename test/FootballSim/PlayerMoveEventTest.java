@@ -13,6 +13,7 @@ public class PlayerMoveEventTest {
 	FieldCoordinate coord2;
 	FieldCoordinate coord3;
 	FieldCoordinate coord4;
+	FieldCoordinate targetCoord;
 	Route route1;
 	Route route2;
 	FootballPlayer player1;
@@ -35,6 +36,8 @@ public class PlayerMoveEventTest {
 		route2.getNextStep();
 		playerMove1 = new PlayerMoveEvent(100, coord1, route1, player1);
 		playerMove2 = new PlayerMoveEvent(playerMove1);
+		
+		aGame.fbField.insertPlayer(coord1, player1);
 	}
 	
 	@Test
@@ -63,5 +66,34 @@ public class PlayerMoveEventTest {
 		assertEquals(playerMove1.getOldCoord(), coord2);
 		assertEquals(playerMove1.getNewCoord(), coord2);
 		assertEquals(playerMove1.getPlayer(), player2);
+	}
+	
+	@Test
+	public void movePlayerTest1() throws FootballException {
+		targetCoord = new FieldCoordinate(coord1, coord2);
+		assertNotEquals(aGame.fbField.getPlayerNumAt(coord1), 0);
+		assertEquals(aGame.fbField.getPlayerNumAt(targetCoord), 0);
+		playerMove1.executeEvent(aGame);
+		assertEquals(aGame.fbField.getPlayerNumAt(coord1), 0);
+		assertNotEquals(aGame.fbField.getPlayerNumAt(targetCoord), 0);
+		assertEquals(aGame.fbField.getPlayerNumAt(targetCoord), player1);
+	}
+	
+	@Test (expected=FootballException.class)
+	public void moveWrongPlayerTest() throws FootballException {
+		playerMove1.setPlayer(player2);
+		playerMove1.executeEvent(aGame);
+	}
+	
+	@Test (expected=FootballException.class)
+	public void movePlayerFromEmptySpaceTest() throws FootballException {
+		playerMove1.setOldCoord(new FieldCoordinate(39, 46));
+		playerMove1.executeEvent(aGame);
+	}
+	
+	@Test (expected=FootballException.class)
+	public void movePlayerToOccupiedSpaceTest() throws FootballException {
+		aGame.fbField.insertPlayer(new FieldCoordinate(40, 44), player2);
+		playerMove1.executeEvent(aGame);
 	}
 }
