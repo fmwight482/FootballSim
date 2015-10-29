@@ -16,7 +16,7 @@ public class PlayerDecisionEvent extends absFootballEvent implements IFootballEv
 	}
 
 	@Override
-	public void executeEvent() {
+	public void executeEvent(FootballGame theGame) {
 		// TODO take an appropriate action
 	}
 

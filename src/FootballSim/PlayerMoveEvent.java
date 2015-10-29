@@ -40,7 +40,7 @@ public class PlayerMoveEvent extends absFootballEvent implements IFootballEvent 
 	}
 	
 	@Override
-	public void executeEvent() {
+	public void executeEvent(FootballGame theGame) {
 		// TODO move player from oldCoord to newCoord
 	}
 	

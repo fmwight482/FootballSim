@@ -7,7 +7,11 @@ package FootballSim;
  */
 public interface IFootballEvent {
 	
-	public void executeEvent();
+	/**
+	 * Execute this event
+	 * @param theGame passed into this function to grant access to field and timer objects
+	 */
+	public void executeEvent(FootballGame theGame);
 	
 	/**
 	 * @return the time when this event occurs (exits the timer queue)

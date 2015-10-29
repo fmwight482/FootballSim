@@ -16,7 +16,7 @@ public class BallMoveEvent extends absFootballEvent implements IFootballEvent {
 	}
 	
 	@Override
-	public void executeEvent() {
+	public void executeEvent(FootballGame theGame) {
 		// TODO Auto-generated method stub
 	}
 }
