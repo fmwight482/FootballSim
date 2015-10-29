@@ -77,6 +77,8 @@ public class PlayerMoveEventTest {
 		assertEquals(aGame.fbField.getPlayerNumAt(coord1), 0);
 		assertNotEquals(aGame.fbField.getPlayerNumAt(targetCoord), 0);
 		assertEquals(aGame.fbField.getPlayerNumAt(targetCoord), player1);
+		assertEquals(playerMove1.getOldCoord(), playerMove2.getNewCoord());
+		assertEquals(playerMove1.getNewCoord(), new FieldCoordinate(41, 45));
 	}
 	
 	@Test (expected=FootballException.class)
@@ -93,7 +95,7 @@ public class PlayerMoveEventTest {
 	
 	@Test (expected=FootballException.class)
 	public void movePlayerToOccupiedSpaceTest() throws FootballException {
-		aGame.fbField.insertPlayer(new FieldCoordinate(40, 44), player2);
+		aGame.fbField.insertPlayer(new FieldCoordinate(40, 45), player2);
 		playerMove1.executeEvent(aGame);
 	}
 }
