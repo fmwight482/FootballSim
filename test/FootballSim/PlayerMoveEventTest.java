@@ -14,10 +14,11 @@ public class PlayerMoveEventTest {
 	FieldCoordinate coord3;
 	FieldCoordinate coord4;
 	Route route1;
+	Route route2;
 	FootballPlayer player1;
 	
 	@Before
-	public void setup() {
+	public void setup() throws FootballException {
 		aGame = new FootballGame();
 		player1 = new FootballPlayer("WR");
 		coord1 = new FieldCoordinate(39, 45);
@@ -28,12 +29,31 @@ public class PlayerMoveEventTest {
 		route1.addStep(coord2);
 		route1.addStep(coord3);
 		route1.addStep(coord4);
+		route2 = new Route(route1);
+		route2.getNextStep();
 		playerMove1 = new PlayerMoveEvent(100, coord1, route1, player1);
+		playerMove2 = new PlayerMoveEvent(playerMove1);
 	}
 	
 	@Test
-	public void constructorTest() {
+	public void constructorTest() throws FootballException {
 		assertNotNull(playerMove1);
+		assertNotNull(playerMove2);
+		
+		assertEquals(playerMove1.getRoute(), route2);
+		assertEquals(playerMove1.getOldCoord(), coord1);
+		assertEquals(playerMove1.getNewCoord(), new FieldCoordinate(coord1, coord2));
+		assertEquals(playerMove1.getPlayer(), player1);
+		
+		assertEquals(playerMove2.getRoute(), route2);
+		assertEquals(playerMove2.getOldCoord(), coord1);
+		assertEquals(playerMove2.getNewCoord(), new FieldCoordinate(coord1, coord2));
+		assertEquals(playerMove2.getPlayer(), player1);
+		
 	}
-
+	
+	@Test
+	public void getterSetterTest() {
+		fail("not yet implemented");
+	}
 }
