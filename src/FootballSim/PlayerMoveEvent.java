@@ -18,11 +18,12 @@ public class PlayerMoveEvent extends absFootballEvent implements IFootballEvent 
 	 * @param aRoute
 	 * @param aPlayer
 	 */
-	public PlayerMoveEvent(int aTime, FieldCoordinate anOldCoord, Route aRoute, FootballPlayer aPlayer) {
+	public PlayerMoveEvent(int aTime, FieldCoordinate anOldCoord, Route aRoute, FootballPlayer aPlayer) 
+			throws FootballException {
 		super(aTime);
 		setRoute(aRoute);
 		setOldCoord(anOldCoord);
-		setNewCoord(route.getNextStep());
+		setNewCoord(new FieldCoordinate(route.getNextStep(), anOldCoord));
 		setPlayer(aPlayer);
 	}
 	
