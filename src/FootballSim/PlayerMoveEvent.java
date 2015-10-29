@@ -40,8 +40,21 @@ public class PlayerMoveEvent extends absFootballEvent implements IFootballEvent 
 	}
 	
 	@Override
-	public void executeEvent(FootballGame theGame) {
-		// TODO move player from oldCoord to newCoord
+	public void executeEvent(FootballGame theGame) throws FootballException {
+		if (theGame.fbField.getPlayerNumAt(oldCoord) != 0) {
+			if (theGame.fbField.getPlayerAt(oldCoord).equals(player)) {
+				theGame.fbField.movePlayer(oldCoord, newCoord);
+				setOldCoord(newCoord);
+				setNewCoord(new FieldCoordinate(route.getNextStep(), oldCoord));
+			}
+			else {
+				throw new FootballException("Coordinates " + oldCoord + " are occupied by player " + 
+						theGame.fbField.getPlayerAt(oldCoord) + ", not " + player);
+			}
+		}
+		else {
+			throw new FootballException("No player at coordinates " + oldCoord);
+		}
 	}
 	
 	public FieldCoordinate getOldCoord() {

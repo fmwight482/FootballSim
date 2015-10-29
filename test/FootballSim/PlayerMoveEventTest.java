@@ -72,11 +72,12 @@ public class PlayerMoveEventTest {
 	public void movePlayerTest1() throws FootballException {
 		targetCoord = new FieldCoordinate(coord1, coord2);
 		assertNotEquals(aGame.fbField.getPlayerNumAt(coord1), 0);
+		assertEquals(aGame.fbField.getPlayerAt(coord1), player1);
 		assertEquals(aGame.fbField.getPlayerNumAt(targetCoord), 0);
 		playerMove1.executeEvent(aGame);
 		assertEquals(aGame.fbField.getPlayerNumAt(coord1), 0);
 		assertNotEquals(aGame.fbField.getPlayerNumAt(targetCoord), 0);
-		assertEquals(aGame.fbField.getPlayerNumAt(targetCoord), player1);
+		assertEquals(aGame.fbField.getPlayerAt(targetCoord), player1);
 		assertEquals(playerMove1.getOldCoord(), playerMove2.getNewCoord());
 		assertEquals(playerMove1.getNewCoord(), new FieldCoordinate(41, 45));
 	}
