@@ -37,4 +37,12 @@ public class FootballTimer {
 	public int getCurrentTime() {
 		return currentTime;
 	}
+	
+	/**
+	 * set currentTime to the given value
+	 * @param aTime
+	 */
+	public void setCurrentTime(int aTime) {
+		currentTime = aTime;
+	}
 }

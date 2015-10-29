@@ -19,7 +19,9 @@ public class FootballTimerTest {
 	}
 	
 	@Test
-	public void getCurrentTimeTests() {
+	public void getSetCurrentTimeTests() {
 		assertEquals(aTimer.getCurrentTime(), 0);
+		aTimer.setCurrentTime(500);
+		assertEquals(aTimer.getCurrentTime(), 500);
 	}
 }
