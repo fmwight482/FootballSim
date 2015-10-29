@@ -12,7 +12,7 @@ public class FootballTimerEvent extends absFootballEvent implements IFootballEve
 	}
 
 	@Override
-	public void executeEvent() {
+	public void executeEvent(FootballGame theGame) {
 		// TODO stop game clock
 	}
 	

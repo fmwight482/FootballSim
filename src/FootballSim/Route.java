@@ -14,6 +14,10 @@ public class Route {
 		steps = new LinkedList<FieldCoordinate>();
 	}
 	
+	public Route(Route aRoute) {
+		steps = new LinkedList<FieldCoordinate>(aRoute.getSteps());
+	}
+	
 	/**
 	 * adds a (vector) coordinate denoting a new movement
 	 * @param newCoord
@@ -34,5 +38,41 @@ public class Route {
 	 */
 	public int countSteps() {
 		return steps.size();
+	}
+	
+	public LinkedList<FieldCoordinate> getSteps() {
+		return steps;
+	}
+	
+	public void setSteps(LinkedList<FieldCoordinate> someSteps) {
+		steps = new LinkedList<FieldCoordinate>(someSteps);
+	}
+	
+	public boolean equals(Object o) {
+		boolean isEqual = false;
+		if (o instanceof Route) {
+			Route aRoute = new Route((Route)o);
+			Route thisRoute = new Route(this);
+			if (countSteps() == aRoute.countSteps()) {
+				int numSteps = countSteps();
+				for (int i=0; i<numSteps; i++) {
+					if (!(aRoute.getNextStep().equals(thisRoute.getNextStep()))) {
+						return false;
+					}
+				}
+				isEqual = true;
+			}
+		}
+		return isEqual;
+	}
+	
+	public int hashCode() {
+		int hash = 17;
+		int numSteps = countSteps();
+		Route thisRoute = new Route(this);
+		for (int i=0; i<numSteps; i++) {
+			hash = (hash + thisRoute.getNextStep().hashCode()) * 13;
+		}
+		return hash;
 	}
 }

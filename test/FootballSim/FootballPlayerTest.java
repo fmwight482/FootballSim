@@ -55,6 +55,21 @@ public class FootballPlayerTest {
 	}
 	
 	@Test
+	public void getBasicSpeedTest() {
+		qb1.setSpeed(45);
+		qb2.setSpeed(0);
+		wr1.setSpeed(99);
+		assertEquals(qb1.getBasicSpeed(), 130.45, 0.01);
+		assertEquals(qb2.getBasicSpeed(), 149.575, 0.01);
+		assertEquals(wr1.getBasicSpeed(), 107.5, 0.01);
+	}
+	
+	@Test
+	public void getTimeToRunPathTest() {
+		fail("Test not implemented because results are implementation-dependent");
+	}
+	
+	@Test
 	public void equalsTest() {
 		qb1.setArm(90);
 		qb1.setSpeed(45);
