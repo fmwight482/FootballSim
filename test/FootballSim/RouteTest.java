@@ -63,6 +63,7 @@ public class RouteTest {
 		route1.addStep(coord2);
 		route1.addStep(coord3);
 		route2.addStep(coord1);
+		assertNotEquals(route1, route2);
 		route2.addStep(coord2);
 		route2.addStep(coord3);
 		assertEquals(route1, route2);
