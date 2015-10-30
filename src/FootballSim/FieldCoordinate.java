@@ -65,8 +65,28 @@ public class FieldCoordinate {
 	 * @return the distance between this coordinate and the given coordinate
 	 */
 	public double getDistBetween(FieldCoordinate otherCoord) {
-		double dist = Math.sqrt(Math.pow(getVert() - otherCoord.getVert(), 2) + 
-				Math.pow(getHorz() - otherCoord.getHorz(), 2));
+		double dist = Math.sqrt(Math.pow(getVertDistBetween(otherCoord), 2) + 
+				Math.pow(getHorzDistBetween(otherCoord), 2));
+		return dist;
+	}
+	
+	/**
+	 * 
+	 * @param otherCoord
+	 * @return the vertical distance between the two coordinates
+	 */
+	public double getVertDistBetween(FieldCoordinate otherCoord) {
+		double dist = getVert() - otherCoord.getVert();
+		return dist;
+	}
+	
+	/**
+	 * 
+	 * @param otherCoord
+	 * @return the horizontal distance between the two coordinates
+	 */
+	public double getHorzDistBetween(FieldCoordinate otherCoord) {
+		double dist = getHorz() - otherCoord.getHorz();
 		return dist;
 	}
 	
