@@ -45,4 +45,8 @@ public class FootballTimer {
 	public void setCurrentTime(int aTime) {
 		currentTime = aTime;
 	}
+	
+	public void addEvent(IFootballEvent newEvent) {
+		
+	}
 }
