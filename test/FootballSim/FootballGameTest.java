@@ -26,10 +26,10 @@ public class FootballGameTest {
 	
 	@Test
 	public void runRouteTest() throws FootballException {
-		route1.addStep(new FieldCoordinate(7, 0));
+		/*route1.addStep(new FieldCoordinate(7, 0));
 		route1.addStep(new FieldCoordinate(0, 1));
 		route1.addStep(new FieldCoordinate(-1, 0));
-		aGame.runRoute(new FieldCoordinate(23, 15), route1, aGame.WR);
+		aGame.runRoute(new FieldCoordinate(23, 15), route1, aGame.WR);*/
 		fail("Not fully implemented");
 	}
 }
