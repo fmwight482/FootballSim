@@ -28,20 +28,35 @@ public class FootballGame {
 	}
 	
 	/**
-	 * Makes the given reciever "run" the given route from startPos
+	 * Generates a list of single-tile movements required for the player to run the given route, 
+	 * as well as the times at which they will reach each tile, and adds them to the timer queue.
 	 * @param startPos
 	 * @param aRoute
-	 * @param reciever
+	 * @param aPlayer
 	 * @throws FootballException
 	 */
-	public void runRoute(FieldCoordinate startPos, Route aRoute, FootballPlayer reciever) 
-			throws FootballException {
+	public void runRoute(FieldCoordinate startPos, Route aRoute, FootballPlayer aPlayer, 
+			int currentTime) throws FootballException {
 		FieldCoordinate currentPos = startPos;
 		FieldCoordinate targetPos;
+		double distBetween;
+		double vertDistBetween;
+		double horzDistBetween; 
+		int movementTime;
+		int vertMsecPerYard;
+		int horzMsecPerYard;
+		
 		while (aRoute.countSteps() > 0) {
 			targetPos = new FieldCoordinate(currentPos, aRoute.getNextStep());
-			fbField.movePlayer(currentPos, targetPos);
-			currentPos = new FieldCoordinate(targetPos);
+			distBetween = currentPos.getDistBetween(targetPos);
+			vertDistBetween = currentPos.getVertDistBetween(targetPos);
+			horzDistBetween = currentPos.getHorzDistBetween(targetPos);
+			movementTime = (int)(aPlayer.getBasicSpeed() * distBetween);
+			vertMsecPerYard = (int)(movementTime/vertDistBetween);
+			horzMsecPerYard = (int)(movementTime/horzDistBetween);
+			for (int x=0; x<movementTime; x+=vertMsecPerYard) {
+				
+			}
 		}
 	}
 }
