@@ -27,10 +27,10 @@ public abstract class absFootballEvent implements Comparable<absFootballEvent> {
 		int comparison;
 		
 		int otherTime = anEvent.getTime();
-		if (otherTime < time) {
+		if (time < otherTime) {
 			comparison = -1;
 		}
-		else if (otherTime > time) {
+		else if (time > otherTime) {
 			comparison = 1;
 		}
 		else {
