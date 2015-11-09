@@ -46,7 +46,18 @@ public class FootballTimer {
 		currentTime = aTime;
 	}
 	
+	/**
+	 * Add the given event to the timer queue
+	 * @param newEvent
+	 */
 	public void addEvent(IFootballEvent newEvent) {
 		
+	}
+	
+	/**
+	 * @return the number of events in the timer queue
+	 */
+	public int getSize() {
+		return timer.size();
 	}
 }
