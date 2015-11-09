@@ -51,7 +51,7 @@ public class FootballTimer {
 	 * @param newEvent
 	 */
 	public void addEvent(IFootballEvent newEvent) {
-		
+		timer.add(newEvent);
 	}
 	
 	/**
