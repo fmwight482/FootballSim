@@ -76,7 +76,7 @@ public class FieldCoordinate {
 	 * @return the vertical distance between the two coordinates
 	 */
 	public double getVertDistBetween(FieldCoordinate otherCoord) {
-		double dist = getVert() - otherCoord.getVert();
+		double dist = otherCoord.getVert() - getVert();
 		return dist;
 	}
 	
@@ -86,7 +86,7 @@ public class FieldCoordinate {
 	 * @return the horizontal distance between the two coordinates
 	 */
 	public double getHorzDistBetween(FieldCoordinate otherCoord) {
-		double dist = getHorz() - otherCoord.getHorz();
+		double dist = otherCoord.getHorz() - getHorz();
 		return dist;
 	}
 	
