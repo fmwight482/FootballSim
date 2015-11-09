@@ -39,6 +39,9 @@ public class PlayerMoveEvent extends absFootballEvent implements IFootballEvent 
 		setRoute(anEvent.getRoute());
 	}
 	
+	/**
+	 * Moves the player
+	 */
 	@Override
 	public void executeEvent(FootballGame theGame) throws FootballException {
 		if (theGame.fbField.getPlayerNumAt(oldCoord) != 0) {
