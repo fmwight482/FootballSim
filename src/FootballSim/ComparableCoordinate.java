@@ -32,6 +32,10 @@ public class ComparableCoordinate extends FieldCoordinate implements Comparable<
 	public int getTime() {
 		return time;
 	}
+	
+	public FieldCoordinate getFieldCoordinate() {
+		return new FieldCoordinate(vert, horz);
+	}
 
 	@Override
 	public int compareTo(ComparableCoordinate otherCoord) {

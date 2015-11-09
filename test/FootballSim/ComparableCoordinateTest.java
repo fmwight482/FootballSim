@@ -37,4 +37,12 @@ public class ComparableCoordinateTest {
 		assertEquals(coord2.compareTo(coord1), 1);
 		assertEquals(coord2.compareTo(coord3), -1);
 	}
+	
+	@Test
+	public void getFieldCoordinateTest() {
+		FieldCoordinate fCoord = coord1.getFieldCoordinate();
+		assertNotNull(fCoord);
+		assertEquals(1, fCoord.getVert());
+		assertEquals(0, fCoord.getHorz());
+	}
 }
