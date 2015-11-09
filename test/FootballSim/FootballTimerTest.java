@@ -10,13 +10,14 @@ public class FootballTimerTest {
 	TestEvent event1;
 	TestEvent event2;
 	TestEvent event3;
+	TestEvent event4;
 	
 	@Before
 	public void setup() {
 		aTimer = new FootballTimer();
-		event1 = new TestEvent(0);
-		event2 = new TestEvent(30);
-		event3 = new TestEvent(100);
+		event1 = new TestEvent(100);
+		event2 = new TestEvent(0);
+		event3 = new TestEvent(30);
 	}
 
 	@Test
@@ -26,9 +27,9 @@ public class FootballTimerTest {
 	
 	@Test
 	public void getSetCurrentTimeTests() {
-		assertEquals(aTimer.getCurrentTime(), 0);
+		assertEquals(0, aTimer.getCurrentTime());
 		aTimer.setCurrentTime(500);
-		assertEquals(aTimer.getCurrentTime(), 500);
+		assertEquals(500, aTimer.getCurrentTime());
 	}
 	
 	@Test
@@ -42,6 +43,18 @@ public class FootballTimerTest {
 	
 	@Test
 	public void getNextEventTest() {
-		
+		aTimer.addEvent(event1);
+		aTimer.addEvent(event2);
+		aTimer.addEvent(event3);
+		assertEquals(0, aTimer.getCurrentTime());
+		aTimer.getNextEvent();
+		assertEquals(0, aTimer.getCurrentTime());
+		assertEquals(2, aTimer.getSize());
+		aTimer.getNextEvent();
+		assertEquals(30, aTimer.getCurrentTime());
+		assertEquals(1, aTimer.getSize());
+		aTimer.getNextEvent();
+		assertEquals(100, aTimer.getCurrentTime());
+		assertEquals(0, aTimer.getSize());
 	}
 }
