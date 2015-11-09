@@ -35,7 +35,7 @@ public class FootballGame {
 	 * @param aPlayer
 	 * @throws FootballException
 	 */
-	public void runRoute(FieldCoordinate startPos, Route aRoute, FootballPlayer aPlayer, 
+	public void simpleRunRoute(FieldCoordinate startPos, Route aRoute, FootballPlayer aPlayer, 
 			int currentTime) throws FootballException {
 		FieldCoordinate currentPos = startPos;
 		FieldCoordinate targetPos;
@@ -54,6 +54,7 @@ public class FootballGame {
 			movementTime = (int)(aPlayer.getBasicSpeed() * distBetween);
 			vertMsecPerYard = (int)(movementTime/vertDistBetween);
 			horzMsecPerYard = (int)(movementTime/horzDistBetween);
+			
 			for (int x=0; x<movementTime; x+=vertMsecPerYard) {
 				
 			}
