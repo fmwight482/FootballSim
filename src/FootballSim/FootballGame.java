@@ -1,5 +1,7 @@
 package FootballSim;
 
+import java.util.PriorityQueue;
+
 /**
  * Class containing the core components of a football game (the field and timer). 
  * Also responsible for executing higher level actions on the field.
@@ -43,8 +45,6 @@ public class FootballGame {
 		double vertDistBetween;
 		double horzDistBetween; 
 		int movementTime;
-		int vertMsecPerYard;
-		int horzMsecPerYard;
 		
 		while (aRoute.countSteps() > 0) {
 			targetPos = new FieldCoordinate(currentPos, aRoute.getNextStep());
@@ -52,12 +52,34 @@ public class FootballGame {
 			vertDistBetween = currentPos.getVertDistBetween(targetPos);
 			horzDistBetween = currentPos.getHorzDistBetween(targetPos);
 			movementTime = (int)(aPlayer.getBasicSpeed() * distBetween);
-			vertMsecPerYard = (int)(movementTime/vertDistBetween);
-			horzMsecPerYard = (int)(movementTime/horzDistBetween);
-			
-			for (int x=0; x<movementTime; x+=vertMsecPerYard) {
-				
-			}
 		}
+	}
+	
+	/**
+	 * 
+	 * @param movementTime
+	 * @param vertDistBetween
+	 * @param horzDistBetween
+	 * @return a playerMoveEvent with 
+	 */
+	private PlayerMoveEvent getPlayerMoveEvent(int movementTime, double vertDistBetween, double horzDistBetween) {
+		int vertMsecPerYard = (int)(movementTime/vertDistBetween);
+		int horzMsecPerYard = (int)(movementTime/horzDistBetween);
+		int vertSign = (int)(vertDistBetween/Math.abs(vertDistBetween));
+		int horzSign = (int)(horzDistBetween/Math.abs(horzDistBetween));
+		
+		PriorityQueue<ComparableCoordinate> steps = new PriorityQueue<ComparableCoordinate>();
+		Route finishedSteps = new Route();
+		PlayerMoveEvent move;
+		for (int x=0; x<movementTime; x+=vertMsecPerYard) {
+			steps.add(new ComparableCoordinate(vertSign, 0, x));
+		}
+		for (int y=0; y<movementTime; y+=horzMsecPerYard) {
+			steps.add(new ComparableCoordinate(0, horzSign, y));
+		}
+		for (ComparableCoordinate step : steps) {
+			finishedSteps.addStep(step);
+		}
+		return move;
 	}
 }
