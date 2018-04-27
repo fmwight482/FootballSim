@@ -17,6 +17,7 @@ public class PlayerMoveEvent extends absFootballEvent implements IFootballEvent 
 	 * @param anOldCoord
 	 * @param aRoute
 	 * @param aPlayer
+	 * @throws FootballException if coordinates are invalid
 	 */
 	public PlayerMoveEvent(int aTime, FieldCoordinate anOldCoord, Route aRoute, FootballPlayer aPlayer) 
 			throws FootballException {

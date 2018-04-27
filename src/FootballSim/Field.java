@@ -83,6 +83,8 @@ public class Field {
 			
 			gridiron[startPos.getVert()][startPos.getHorz()] = 0;
 			gridiron[endPos.getVert()][endPos.getHorz()] = startNum;
+
+			System.out.println("Moved Player from " + startPos + " to " + endPos);
 		}
 	}
 	

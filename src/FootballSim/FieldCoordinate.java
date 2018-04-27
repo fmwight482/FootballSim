@@ -22,8 +22,9 @@ public class FieldCoordinate {
 	/**
 	 * constructs a new coordinate by combining two other coordinates
 	 * forces new coordinate to remain within the bounds of the field. 
-	 * @param coord1
+	 * @param coord1 (usually a position)
 	 * @param coord2 (usually a vector)
+	 * @throws FootballException if the combined coordinates are outside the boundaries of the field
 	 */
 	public FieldCoordinate(FieldCoordinate coord1, FieldCoordinate coord2) throws FootballException {
 		vert = coord1.getVert() + coord2.getVert();
@@ -34,7 +35,7 @@ public class FieldCoordinate {
 	
 	/**
 	 * constrain coordinates to within a range of 0-119 for vert and 0-52 for horz
-	 * @throws FootballException
+	 * @throws FootballException if coordinates do not fall within the required range
 	 */
 	private void checkCoords() throws FootballException {
 		if (vert >= 120) {
